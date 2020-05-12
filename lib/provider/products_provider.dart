@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class Products with ChangeNotifier {
   List<Product> _items = [
     Product(
-      id: "c1",
+      id: "jap",
       title: "Tokyo",
       subtitle: "Japan",
       description:
@@ -19,7 +19,7 @@ class Products with ChangeNotifier {
       isFavourite: false,
     ),
     Product(
-      id: "c2",
+      id: "pok",
       title: "Pokhara",
       subtitle: "Nepal",
       description:
@@ -30,7 +30,7 @@ class Products with ChangeNotifier {
       isFavourite: false,
     ),
     Product(
-      id: "c3",
+      id: "fra",
       title: "Italy",
       subtitle: "France",
       description:
@@ -42,7 +42,7 @@ class Products with ChangeNotifier {
       isFavourite: false,
     ),
     Product(
-      id: "c4",
+      id: "chi",
       title: "China",
       subtitle: "Nanjing",
       description:
@@ -53,7 +53,7 @@ class Products with ChangeNotifier {
       isFavourite: false,
     ),
     Product(
-      id: "c5",
+      id: "tkp",
       title: "Tikapur",
       subtitle: "Kailali",
       description: "Tikapur mero tikapur hamro tikapur !",

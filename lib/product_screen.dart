@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:tour/widgets/product_grid_builder.dart';
+
 //~~~~The PAGE OF THE SELECTED PRODUCT~~~~//
 
 class ProductScreen extends StatefulWidget {
@@ -26,20 +28,37 @@ class _ProductScreenState extends State<ProductScreen> {
     selectedDes = routeAgrs['des'];
 
     return Scaffold(
-      appBar: CupertinoNavigationBar(
-        middle: Text(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text(
           selectedTitle,
           style: TextStyle(
-              fontSize: 19, fontWeight: FontWeight.w300, color: Colors.black),
+              fontSize: 19.5,
+              fontWeight: FontWeight.w500,
+              color: Color(0xff2F2F2F)),
         ),
-        trailing: GestureDetector(
-          child: Icon(CupertinoIcons.heart),
-          onTap: () {},
-        ),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 14.0),
+            child: GestureDetector(
+              child: Icon(
+                Icons.favorite_border,
+              ),
+              onTap: () {},
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2),
+          padding: const EdgeInsets.symmetric(vertical: 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -62,7 +81,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       Container(
                         height: 100,
                         width: 100,
-                        color: Colors.green,
+                        color: Color(0xff24DE6F),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -135,102 +154,119 @@ class _ProductScreenState extends State<ProductScreen> {
                   )
                 ],
               ),
-              Divider(),
+              SizedBox(
+                height: 12,
+              ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(0.0),
                 child: Container(
                   height: 175,
-                  width: 365,
+                  width: double.infinity,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, spreadRadius: 0.2)
-                      ]),
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      // color: Color(0xffF7F4F4),
+                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
                       child: Text(
                         selectedDes,
                         style: TextStyle(
-                            fontWeight: FontWeight.w200, fontSize: 19),
+                          fontFamily: "bestfont",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          color: Colors.black.withOpacity(0.7),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-
+              SizedBox(
+                height: 5,
+              ),
 //~~~~~~~BELOW TO BUILD THE DEALS FOR SPECIFIC SELECTED PRODUCT~~~~~//
-
+              Container(
+                height: 12,
+                width: double.infinity,
+                color: Colors.grey.withOpacity(0.07),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  " Deals",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 19),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      " Best Hotels",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 19,
+                          fontFamily: "bestfont"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 5.0),
+                      child: Text(
+                        " more",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Color(0xffE30045),
+                            fontFamily: "bestfont"),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    width: 100,
-                    height: 100,
-                    // color: Colors.blue,
-                    child: Placeholder(),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    child: Placeholder(),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    // color: Colors.blue,
-                    child: Placeholder(),
-                  ),
-                ],
+              Container(
+                height: 370,
+                width: double.infinity,
+                // color: Colors.blue,
+                child: ProductGrid(selectedId),
               ),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    width: 100,
-                    height: 100,
-                    // color: Colors.blue,
-                    child: Placeholder(),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    child: Placeholder(),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    // color: Colors.blue,
-                    child: Placeholder(),
-                  ),
-                ],
+              Container(
+                height: 12,
+                width: double.infinity,
+                color: Colors.grey.withOpacity(0.07),
               ),
-
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  " Amazing hotels",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 19),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      " Discover More Places",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 19,
+                          fontFamily: "bestfont"),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2.6),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 19,
+                        color: Color(0xffE30045),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              Divider(),
-              Container(
-                height: 170,
-                width: double.infinity,
-                child: Image.asset(
-                  "assets/images/amazing.png",
-                  fit: BoxFit.fill,
+
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 2),
+                child: Container(
+                  height: 170,
+                  width: double.infinity,
+                  child: Image.network(
+                    "https://www.unmondeapartager.org/wp-content/uploads/2018/04/1_eiv8ar6Y9sqk_90MC1OpHw.jpeg",
+                    // "https://www.livinginluxury.club/category/packagetour.jpg",
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ],
