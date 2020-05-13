@@ -12,9 +12,9 @@ class DestyItem extends StatelessWidget {
     final selectedProducts = Provider.of<Product>(context,
         listen: false); //provides the data type of the model
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(5),
         child: GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, ProductScreen.routeName, arguments: {
@@ -28,8 +28,8 @@ class DestyItem extends StatelessWidget {
             //^^^Stack for the desired overlapping layout--//
             children: <Widget>[
               Container(
-                height: 220,
-                width: 140,
+                height: 160,
+                width: 120,
                 child: Hero(
                   tag: "product${selectedProducts.id}",
                   child: Image.network(
@@ -54,6 +54,7 @@ class DestyItem extends StatelessWidget {
                           selectedProducts
                               .title, //<<---data through provider--<<
                           style: TextStyle(
+                              fontFamily: "bestfont",
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                               fontSize: 20),
@@ -64,6 +65,7 @@ class DestyItem extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
+                              fontFamily: "bestfont",
                               fontSize: 14),
                         )
                       ],

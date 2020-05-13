@@ -119,7 +119,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               }),
                         ),
                         Text(
-                          "DESTY", //title text
+                          "TOUR", //title text
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
@@ -151,64 +151,92 @@ class _DashboardPageState extends State<DashboardPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    height: 200,
+                    height: 165,
                     width: double.infinity,
                     child: Carousel(
-                        images: [
-                          NetworkImage(
-                              "https://boardroom.global/wp-content/uploads/2019/11/153167_c0f7f4e4-e1573642833946.jpg"),
-                          NetworkImage(
-                              "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"),
-                          NetworkImage(
-                              "https://basecampadventure.com/wp-content/uploads/2018/07/Everest-Three-Pass-Trek.jpg"),
-                          NetworkImage(
-                              "https://www.goworldtravel.com/wp-content/uploads/2019/03/climbing-mount-fuji-in-off-season-e1553896677572.jpg"),
-                          NetworkImage(
-                              "https://i.ytimg.com/vi/V3p7vx8mOqg/maxresdefault.jpg"),
-                        ],
-                        // animationDuration: Duration(seconds: 1),
-                        dotSize: 6.0,
-                        dotSpacing: 15.0,
-                        dotColor: Colors.black,
-                        indicatorBgPadding: 4.0,
-                        dotBgColor: Colors.grey.withOpacity(0.5),
-                        borderRadius: true),
+                      images: [
+                        NetworkImage(
+                            "https://boardroom.global/wp-content/uploads/2019/11/153167_c0f7f4e4-e1573642833946.jpg"),
+                        NetworkImage(
+                            "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"),
+                        NetworkImage(
+                            "https://basecampadventure.com/wp-content/uploads/2018/07/Everest-Three-Pass-Trek.jpg"),
+                        NetworkImage(
+                            "https://www.goworldtravel.com/wp-content/uploads/2019/03/climbing-mount-fuji-in-off-season-e1553896677572.jpg"),
+                        NetworkImage(
+                            "https://i.ytimg.com/vi/V3p7vx8mOqg/maxresdefault.jpg"),
+                      ],
+                      // animationDuration: Duration(seconds: 1),
+                      dotSize: 6.0,
+                      dotSpacing: 15.0,
+                      dotColor: Colors.black,
+                      indicatorBgPadding: 4.0,
+                      dotBgColor: Colors.grey.withOpacity(0.0),
+                      borderRadius: true,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  //^^^--For vertical spcaing--//
-                  height: 14,
+                SizedBox(height: 15),
+                Container(
+                  height: 12,
+                  width: double.infinity,
+                  color: Colors.grey.withOpacity(0.07),
                 ),
-                Divider(),
-                Text(
-                  "    Trending Attractions",
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "   Trending Attractions",
+                      style: TextStyle(
+                        fontFamily: "bestfont",
+                        fontSize: 17,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 9.0),
+                      child: Text(
+                        " more",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Color(0xffE30045),
+                            fontFamily: "bestfont"),
+                      ),
+                    ),
+                  ],
                 ),
+                SizedBox(height: 5),
                 Container(
                   //^^^--This container contains the products(destinaitons) of the desty app--<<<
-                  height: 210,
+                  height: 170,
                   width: double.infinity,
                   child: ProductHorizon(), //<<<--Listview of the products--<<
                 ),
-                Divider(),
-                SizedBox(height: 10),
-                Text(
-                  "    Updates you might like..",
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w300,
-                  ),
+                SizedBox(height: 15),
+                Container(
+                  height: 12,
+                  width: double.infinity,
+                  color: Colors.grey.withOpacity(0.07),
                 ),
                 SizedBox(height: 10),
+                Text(
+                  "    Stories you might like",
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontFamily: "bestfont",
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                SizedBox(height: 14),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Container(
                     //^^^This container is for containing further stuffs that can be added to the screen
-                    height: 210,
+                    height: 350,
                     child: ListView(
+                      physics: NeverScrollableScrollPhysics(),
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 6.0),
@@ -244,13 +272,15 @@ class _DashboardPageState extends State<DashboardPage> {
                                         title: Text(
                                           "Nepal's new mountains.",
                                           style: TextStyle(
+                                            fontFamily: "bestfont",
                                             fontWeight: FontWeight.w400,
                                             fontSize: 26,
                                           ),
                                         ),
                                         subtitle: Text(
-                                          "There have been news lately that the mount Everest has been divided into two...",
+                                          "There have been news lately that the mount Everest has been divided into....",
                                           style: TextStyle(
+                                            fontFamily: "bestfont",
                                             fontWeight: FontWeight.w400,
                                             fontSize: 20,
                                           ),
@@ -298,6 +328,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                         title: Text(
                                           "Corona bad for Tourism.",
                                           style: TextStyle(
+                                            fontFamily: "bestfont",
                                             fontWeight: FontWeight.w400,
                                             fontSize: 26,
                                           ),
@@ -305,6 +336,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                         subtitle: Text(
                                           "The number of tourists has drastically decreased in just few months...",
                                           style: TextStyle(
+                                            fontFamily: "bestfont",
                                             fontWeight: FontWeight.w400,
                                             fontSize: 20,
                                           ),
@@ -352,6 +384,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                         title: Text(
                                           "\"I love Red\" says Devil.",
                                           style: TextStyle(
+                                            fontFamily: "bestfont",
                                             fontWeight: FontWeight.w400,
                                             fontSize: 26,
                                           ),
@@ -361,6 +394,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 20,
+                                            fontFamily: "bestfont",
                                           ),
                                         ),
                                       ),
@@ -408,12 +442,14 @@ class _DashboardPageState extends State<DashboardPage> {
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 26,
+                                            fontFamily: "bestfont",
                                           ),
                                         ),
                                         subtitle: Text(
                                           "The most renowned place on earth for anime...",
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
+                                            fontFamily: "bestfont",
                                             fontSize: 20,
                                           ),
                                         ),
@@ -430,7 +466,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           child: Text(
                             "More Stories...",
                             style: TextStyle(
-                                color: Colors.blue,
+                                color: Color(0xffE30045),
                                 fontWeight: FontWeight.w300,
                                 fontSize: 14),
                           ),

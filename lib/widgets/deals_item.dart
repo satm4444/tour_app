@@ -12,14 +12,21 @@ class DealsItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 0, right: 0.0),
       child: Container(
-        height: forheight * 1.0,
+        //  height: forheight * 1.0,
         width: forWidth * .3,
+
         child: Column(
           children: <Widget>[
-            Container(
-              height: forheight * 0.185,
-              width: 100.4,
-              child: Image.network(fromModel.imageURL, fit: BoxFit.cover),
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(2),
+                topRight: Radius.circular(2),
+              ),
+              child: Container(
+                height: forheight * 0.185,
+                width: 100.4,
+                child: Image.network(fromModel.imageURL, fit: BoxFit.cover),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 0.2),

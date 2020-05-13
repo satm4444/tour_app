@@ -168,16 +168,16 @@ class _ProductScreenState extends State<ProductScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SingleChildScrollView(
-                      child: Text(
-                        selectedDes,
-                        style: TextStyle(
-                          fontFamily: "bestfont",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14,
-                          color: Colors.black.withOpacity(0.7),
-                        ),
+                        child: Text(
+                      selectedDes,
+                      // textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontFamily: "bestfont",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        color: Colors.black.withOpacity(0.7),
                       ),
-                    ),
+                    )),
                   ),
                 ),
               ),
@@ -268,6 +268,15 @@ class _ProductScreenState extends State<ProductScreen> {
                     fit: BoxFit.fill,
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+//~~~~~~~BELOW TO BUILD THE DEALS FOR SPECIFIC SELECTED PRODUCT~~~~~//
+              Container(
+                height: 12,
+                width: double.infinity,
+                color: Colors.grey.withOpacity(0.07),
               ),
             ],
           ),

@@ -13,7 +13,7 @@ class ProductHorizon extends StatelessWidget {
     final products = loadedProducts.items;
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(5),
       itemCount: products.length,
       itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
         value: products[index],
