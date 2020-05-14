@@ -34,36 +34,55 @@ class DealsItem extends StatelessWidget {
                 width: forWidth * .268,
                 height: forheight * 0.075,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black.withOpacity(0.07)),
+                  border: Border.all(color: Colors.black.withOpacity(0.06)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(left: 4.0),
-                      child: Text(
-                        fromModel.title,
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: "bestfont",
-                            fontWeight: FontWeight.w800),
+                      child: Container(
+                        height: 20,
+                        // color: Colors.blue,
+                        child: Flexible(
+                          child: Text(
+                            fromModel.title,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: "bestfont",
+                                fontWeight: FontWeight.w800),
+                          ),
+                        ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 4.0),
-                      child: Text(
-                        fromModel.subtitle,
-                        style: TextStyle(
-                            fontSize: 9,
-                            fontFamily: "bestfont",
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black.withOpacity(0.5)),
+                      padding: const EdgeInsets.only(left: 2.0),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.place,
+                            size: 11,
+                            color: Colors.blue,
+                          ),
+                          Flexible(
+                            child: Text(
+                              fromModel.subtitle,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 9,
+                                  fontFamily: "bestfont",
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black.withOpacity(0.5)),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 4.0),
+                      padding: const EdgeInsets.only(left: 5.0),
                       child: Text(
-                        "price",
+                        "NPR 4000/-",
                         style: TextStyle(
                             fontSize: 10,
                             fontFamily: "bestfont",

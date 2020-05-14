@@ -1,4 +1,5 @@
 import 'package:tour/BottomBarScreen.dart';
+import 'package:tour/model/Product.dart';
 import 'package:tour/product_screen.dart';
 import 'package:tour/provider/deals_of_products_provider.dart';
 import 'package:tour/provider/products_provider.dart';
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(
           value: Products(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Product(),
         ),
         ChangeNotifierProvider.value(
           value: Deals(),

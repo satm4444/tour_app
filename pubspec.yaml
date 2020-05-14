@@ -48,6 +48,7 @@ flutter:
     - assets/images/amazing.png
     - assets/smile.png
     - assets/profilecover.png
+    - assets/parteners.png
    
 
   # An image asset can refer to one or more resolution-specific "variants", see

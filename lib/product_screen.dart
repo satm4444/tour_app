@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tour/colors.dart';
+import 'package:tour/model/Product.dart';
 
 import 'package:tour/widgets/product_grid_builder.dart';
 
@@ -17,7 +20,6 @@ class _ProductScreenState extends State<ProductScreen> {
   String selectedImage;
   String selectedId;
   String selectedDes;
-  List offerFinal;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,9 @@ class _ProductScreenState extends State<ProductScreen> {
     selectedId = routeAgrs['id'];
     selectedDes = routeAgrs['des'];
 
+    var screenSIZE = MediaQuery.of(context).size;
+    //  var forheight = screenSIZE.height;
+    var forWidth = screenSIZE.width;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -46,12 +51,19 @@ class _ProductScreenState extends State<ProductScreen> {
             }),
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(right: 14.0),
-            child: GestureDetector(
-              child: Icon(
-                Icons.favorite_border,
-              ),
-              onTap: () {},
+            padding: const EdgeInsets.only(right: 4.0),
+            child: Consumer<Product>(
+              builder: (ctx, prod, _) {
+                return IconButton(
+                  color: Colors.red,
+                  icon: Icon(prod.isFavourite
+                      ? Icons.favorite
+                      : Icons.favorite_border),
+                  onPressed: () {
+                    prod.toggleIsFavourite();
+                  },
+                );
+              },
             ),
           ),
         ],
@@ -81,7 +93,18 @@ class _ProductScreenState extends State<ProductScreen> {
                       Container(
                         height: 100,
                         width: 100,
-                        color: Color(0xff24DE6F),
+
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomLeft,
+                            end: Alignment.topRight,
+                            colors: [
+                              Colors.lightBlue,
+                              Colors.deepPurple,
+                            ],
+                          ),
+                        ),
+                        // color: Color(0xff24DE6F),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -93,7 +116,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                 onPressed: () {},
                               ),
                               Text(
-                                "Book ticket",
+                                "Bookings",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
@@ -105,7 +128,16 @@ class _ProductScreenState extends State<ProductScreen> {
                       Container(
                         height: 100,
                         width: 100,
-                        color: Colors.red,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomLeft,
+                            end: Alignment.topRight,
+                            colors: [
+                              Colors.pinkAccent,
+                              Colors.red,
+                            ],
+                          ),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -129,7 +161,16 @@ class _ProductScreenState extends State<ProductScreen> {
                       Container(
                         height: 100,
                         width: 100,
-                        color: Colors.orange,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomLeft,
+                            end: Alignment.topRight,
+                            colors: [
+                              Colors.greenAccent,
+                              Colors.green,
+                            ],
+                          ),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -158,6 +199,134 @@ class _ProductScreenState extends State<ProductScreen> {
                 height: 12,
               ),
               Padding(
+                padding: const EdgeInsets.only(left: 9.0, top: 3),
+                child: Container(
+                  height: 170,
+                  width: forWidth * 0.95,
+                  //color: Colors.blue,
+                  color: Color(0xffFDF2F2).withOpacity(0.8),
+                  child: Column(children: <Widget>[
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      height: 35,
+                      width: forWidth * 0.95,
+                      //color: Colors.green,
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 13,
+                          ),
+                          Text(
+                            "Best Package for you !",
+                            style: TextStyle(
+                                fontFamily: "Heading",
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: 22,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 4.0, left: 60),
+                            child: Text(
+                              "See more >",
+                              style: TextStyle(
+                                  fontFamily: "Subtextregular",
+                                  fontSize: 14,
+                                  color: AppColor.buynowbutton,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 60,
+                      width: forWidth * 0.95,
+                      //  color: Colors.orange,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 13.0),
+                        child: Row(
+                          children: <Widget>[
+                            Text(
+                              "NPR 8000/-",
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontFamily: "bestfont",
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 4,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 50,
+                      width: forWidth * 0.95,
+                      // color: Colors.pink,
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            width: 127,
+                            height: 43,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: AppColor.buynowbutton,
+                            ),
+                            child: Center(
+                              child: Text(
+                                "BOOK NOW",
+                                style: TextStyle(
+                                    fontFamily: "Heading",
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            width: 190,
+                            height: 43,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomLeft,
+                                end: Alignment.topRight,
+                                colors: [
+                                  Color(0xffFF8C00),
+                                  Colors.red,
+                                ],
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "CUSTOMIZE YOUR TRIP",
+                                style: TextStyle(
+                                    fontFamily: "Heading",
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(0.0),
                 child: Container(
                   height: 175,
@@ -166,7 +335,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       // color: Color(0xffF7F4F4),
                       ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: SingleChildScrollView(
                         child: Text(
                       selectedDes,
@@ -277,6 +446,43 @@ class _ProductScreenState extends State<ProductScreen> {
                 height: 12,
                 width: double.infinity,
                 color: Colors.grey.withOpacity(0.07),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 8),
+                child: Text(
+                  "Our Parteners",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black.withOpacity(0.5),
+                    fontFamily: "bestfont",
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 2.5),
+                child: Container(
+                  height: 40,
+                  width: 300,
+                  child: Image.asset("assets/parteners.png"),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 8),
+                child: Text(
+                  "© Tour,All rights reserved",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black.withOpacity(0.5),
+                    fontFamily: "bestfont",
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
               ),
             ],
           ),
