@@ -11,7 +11,7 @@ class FavouriteScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: Colors.blue,
-        height: 400,
+        height: 300,
         child: ListView.builder(
           itemCount: favdata.length,
           itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
@@ -28,12 +28,11 @@ class FavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fromModel = Provider.of<Product>(context, listen: false);
-    return Scaffold(
-      body: Container(
-        height: 100,
-        width: 50,
-        child: Image.network(fromModel.imageURL),
-      ),
+    return Container(
+      color: Colors.red,
+      height: 50,
+      width: 50,
+      child: Text(fromModel.title),
     );
   }
 }

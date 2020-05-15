@@ -1,8 +1,8 @@
-import 'package:tour/dashboard.dart';
+import 'package:tour/Screens/dashboard.dart';
 import 'package:tour/favourite_screen.dart';
 import 'package:tour/profile.dart';
 
-import 'package:tour/search_screen.dart';
+import 'package:tour/Screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomBarScreen extends StatefulWidget {

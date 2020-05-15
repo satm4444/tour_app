@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tour/colors.dart';
 import 'package:tour/model/Product.dart';
+import 'package:tour/provider/products_provider.dart';
 
 import 'package:tour/widgets/product_grid_builder.dart';
 
@@ -16,18 +17,11 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  String selectedTitle;
-  String selectedImage;
-  String selectedId;
-  String selectedDes;
-
   @override
   Widget build(BuildContext context) {
-    final routeAgrs = ModalRoute.of(context).settings.arguments as Map;
-    selectedTitle = routeAgrs['title'];
-    selectedImage = routeAgrs['image'];
-    selectedId = routeAgrs['id'];
-    selectedDes = routeAgrs['des'];
+    final id = ModalRoute.of(context).settings.arguments as String;
+    final selectedProduct = Provider.of<Products>(context).findById(id);
+    final fromModel = Provider.of<Product>(context);
 
     var screenSIZE = MediaQuery.of(context).size;
     //  var forheight = screenSIZE.height;
@@ -38,7 +32,7 @@ class _ProductScreenState extends State<ProductScreen> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(
-          selectedTitle,
+          selectedProduct.title,
           style: TextStyle(
               fontSize: 19.5,
               fontWeight: FontWeight.w500,
@@ -52,17 +46,13 @@ class _ProductScreenState extends State<ProductScreen> {
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 4.0),
-            child: Consumer<Product>(
-              builder: (ctx, prod, _) {
-                return IconButton(
-                  color: Colors.red,
-                  icon: Icon(prod.isFavourite
-                      ? Icons.favorite
-                      : Icons.favorite_border),
-                  onPressed: () {
-                    prod.toggleIsFavourite();
-                  },
-                );
+            child: IconButton(
+              color: Colors.red,
+              icon: Icon(fromModel.isFavourite
+                  ? Icons.favorite
+                  : Icons.favorite_border),
+              onPressed: () {
+                fromModel.toggleIsFavourite();
               },
             ),
           ),
@@ -77,12 +67,12 @@ class _ProductScreenState extends State<ProductScreen> {
               Row(
                 children: <Widget>[
                   Hero(
-                    tag: "product$selectedId",
+                    tag: "product${selectedProduct.id}",
                     child: Container(
                       width: 275,
                       height: 300,
                       child: Image.network(
-                        selectedImage,
+                        selectedProduct.imageURL,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -338,7 +328,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: SingleChildScrollView(
                         child: Text(
-                      selectedDes,
+                      selectedProduct.description,
                       // textAlign: TextAlign.left,
                       style: TextStyle(
                         fontFamily: "bestfont",
@@ -390,7 +380,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 height: 370,
                 width: double.infinity,
                 // color: Colors.blue,
-                child: ProductGrid(selectedId),
+                child: ProductGrid(selectedProduct.id),
               ),
               SizedBox(height: 20),
               Container(

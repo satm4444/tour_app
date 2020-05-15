@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tour/model/Product.dart';
+
+import 'package:tour/model/hotel.dart';
 
 class DealsItem extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class DealsItem extends StatelessWidget {
     var screenSIZE = MediaQuery.of(context).size;
     var forheight = screenSIZE.height;
     var forWidth = screenSIZE.width;
-    final fromModel = Provider.of<Product>(context, listen: false);
+    final fromModel = Provider.of<Hotel>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.only(left: 0, right: 0.0),
       child: Container(

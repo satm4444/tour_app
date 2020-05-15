@@ -1,6 +1,6 @@
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:tour/profile_screen.dart';
-import 'package:tour/search_screen.dart';
+
+import 'package:tour/Screens/search_screen.dart';
 import 'package:tour/widgets/product_horizon.dart';
 import 'package:flutter/material.dart';
 
@@ -22,16 +22,8 @@ class _DashboardPageState extends State<DashboardPage> {
           child: ListView(
             children: <Widget>[
               DrawerHeader(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ProfileScreen()),
-                    );
-                  },
-                  child: Image.network(
-                      "https://ctl.s6img.com/society6/img/b1sMuHt6R2Hx8pTsa99hI7gkAmo/w_1500/prints/~artwork/s6-original-art-uploads/society6/uploads/misc/19fc4d5ced334072a83bb03465bab5d3/~~/noragami-minimmalist-yato-prints.jpg"),
-                ),
+                child: Image.network(
+                    "https://ctl.s6img.com/society6/img/b1sMuHt6R2Hx8pTsa99hI7gkAmo/w_1500/prints/~artwork/s6-original-art-uploads/society6/uploads/misc/19fc4d5ced334072a83bb03465bab5d3/~~/noragami-minimmalist-yato-prints.jpg"),
               ),
               ListTile(
                 trailing: Icon(Icons.map),

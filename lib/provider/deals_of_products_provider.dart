@@ -1,11 +1,11 @@
-import 'package:tour/model/Product.dart';
 import 'package:flutter/material.dart';
+import 'package:tour/model/hotel.dart';
 
 //~~~~~~Yo data chai tyo Products like Tokyo Pokhara ko bhitra halnu ko lagi~~~~~////
 
 class Deals with ChangeNotifier {
-  List<Product> _items = [
-    Product(
+  List<Hotel> _items = [
+    Hotel(
       id: "pok",
       title: "LakeShore",
       subtitle: "LakeSide",
@@ -14,7 +14,7 @@ class Deals with ChangeNotifier {
           "https://r-cf.bstatic.com/images/hotel/max1024x768/169/169347935.jpg",
       // "https://www.unmondeapartager.org/wp-content/uploads/2018/04/1_eiv8ar6Y9sqk_90MC1OpHw.jpeg",
     ),
-    Product(
+    Hotel(
       id: "pok",
       title: "Himalayan Crown",
       subtitle: "Sarangkot Road",
@@ -23,7 +23,7 @@ class Deals with ChangeNotifier {
           "https://r-cf.bstatic.com/images/hotel/max1024x768/165/165620960.jpg",
       // "https://www.unmondeapartager.org/wp-content/uploads/2018/04/1_eiv8ar6Y9sqk_90MC1OpHw.jpeg",
     ),
-    Product(
+    Hotel(
       id: "pok",
       title: "Golden Lake",
       subtitle: "Kahare LakeSide",
@@ -32,7 +32,7 @@ class Deals with ChangeNotifier {
           "https://q-cf.bstatic.com/images/hotel/max1024x768/162/162550842.jpg",
       // "https://www.unmondeapartager.org/wp-content/uploads/2018/04/1_eiv8ar6Y9sqk_90MC1OpHw.jpeg",
     ),
-    Product(
+    Hotel(
       id: "pok",
       title: "Fewa Dream",
       subtitle: "Kahare LakeSide",
@@ -41,7 +41,7 @@ class Deals with ChangeNotifier {
           "https://r-cf.bstatic.com/images/hotel/max1024x768/169/169204956.jpg",
       // "https://www.unmondeapartager.org/wp-content/uploads/2018/04/1_eiv8ar6Y9sqk_90MC1OpHw.jpeg",
     ),
-    Product(
+    Hotel(
       id: "pok",
       title: "Three Jewels",
       subtitle: "LakeSide Road",
@@ -50,7 +50,7 @@ class Deals with ChangeNotifier {
           "https://q-cf.bstatic.com/images/hotel/max1024x768/154/154252971.jpg",
       // "https://www.unmondeapartager.org/wp-content/uploads/2018/04/1_eiv8ar6Y9sqk_90MC1OpHw.jpeg",
     ),
-    Product(
+    Hotel(
       id: "pok",
       title: "Eagle Zone",
       subtitle: "LakeSide-6",
@@ -59,7 +59,7 @@ class Deals with ChangeNotifier {
           "https://q-cf.bstatic.com/images/hotel/max1024x768/162/162977485.jpg",
       //  "https://www.iucn.org/sites/dev/files/styles/850x500_no_menu_article/public/import/img/phewa_lake_ayush_rana.jpg?itok=gB-0lmkh",
     ),
-    Product(
+    Hotel(
       id: "jap",
       title: "Shinjuku",
       subtitle: "Kabukicho",
@@ -69,7 +69,7 @@ class Deals with ChangeNotifier {
       //
       // "https://clip.cookdiary.net/sites/default/files/wallpaper/drawn-eiffel-tower/377148/drawn-eiffel-tower-italy-377148-4001059.jpg",
     ),
-    Product(
+    Hotel(
       id: "jap",
       title: "Sui Akaska",
       subtitle: "Minato,Tokyo",
@@ -78,7 +78,7 @@ class Deals with ChangeNotifier {
           "https://q-cf.bstatic.com/images/hotel/max1024x768/232/232234444.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "jap",
       title: "Onsen",
       subtitle: "Shinjuku",
@@ -87,7 +87,7 @@ class Deals with ChangeNotifier {
           "https://q-cf.bstatic.com/images/hotel/max1024x768/200/200914091.jpg",
       //  "https://clip.cookdiary.net/sites/default/files/wallpaper/drawn-eiffel-tower/377148/drawn-eiffel-tower-italy-377148-4001059.jpg",
     ),
-    Product(
+    Hotel(
       id: "jap",
       title: "Hotel Ueno Shin",
       subtitle: "Taito-ku",
@@ -97,7 +97,7 @@ class Deals with ChangeNotifier {
       //   "https://q-cf.bstatic.com/images/hotel/max1024x768/232/232366779.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "jap",
       title: "Nohga",
       subtitle: "Taito-ku",
@@ -106,7 +106,7 @@ class Deals with ChangeNotifier {
           "https://r-cf.bstatic.com/images/hotel/max1024x768/207/207695112.jpg",
       //  "https://clip.cookdiary.net/sites/default/files/wallpaper/drawn-eiffel-tower/377148/drawn-eiffel-tower-italy-377148-4001059.jpg",
     ),
-    Product(
+    Hotel(
       id: "jap",
       title: "Nihaonbashi",
       subtitle: "Chuo-ku",
@@ -115,7 +115,7 @@ class Deals with ChangeNotifier {
           "https://r-cf.bstatic.com/images/hotel/max1024x768/160/160487766.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "fra",
       title: "Club House",
       subtitle: "Viale Amerigo",
@@ -125,7 +125,7 @@ class Deals with ChangeNotifier {
       // "https://r-cf.bstatic.com/images/hotel/max1024x768/160/160487766.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "fra",
       title: "Hotel Stresa",
       subtitle: "Viale Gubbio",
@@ -136,7 +136,7 @@ class Deals with ChangeNotifier {
       // "https://r-cf.bstatic.com/images/hotel/max1024x768/160/160487766.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "fra",
       title: "Nord Est",
       subtitle: "Viale Amerigo",
@@ -147,7 +147,7 @@ class Deals with ChangeNotifier {
       // "https://r-cf.bstatic.com/images/hotel/max1024x768/160/160487766.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "fra",
       title: "Hotel Rubbens",
       subtitle: "Viale Amerigo",
@@ -158,7 +158,7 @@ class Deals with ChangeNotifier {
       // "https://r-cf.bstatic.com/images/hotel/max1024x768/160/160487766.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "fra",
       title: "Hotel President",
       subtitle: "Viale Tripoli",
@@ -169,7 +169,7 @@ class Deals with ChangeNotifier {
       // "https://r-cf.bstatic.com/images/hotel/max1024x768/160/160487766.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "fra",
       title: "i-SUITE Design",
       subtitle: "Viale Regina",
@@ -180,7 +180,7 @@ class Deals with ChangeNotifier {
       // "https://r-cf.bstatic.com/images/hotel/max1024x768/160/160487766.jpg",
       // "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
     ),
-    Product(
+    Hotel(
       id: "chi",
       title: "JW Marriott",
       subtitle: "Nanjing west",
@@ -190,7 +190,7 @@ class Deals with ChangeNotifier {
       // "https://q-cf.bstatic.com/images/hotel/max1024x768/162/162977485.jpg",
       //  "https://www.iucn.org/sites/dev/files/styles/850x500_no_menu_article/public/import/img/phewa_lake_ayush_rana.jpg?itok=gB-0lmkh",
     ),
-    Product(
+    Hotel(
       id: "chi",
       title: "Hotel NUO",
       subtitle: "East Chang",
@@ -200,7 +200,7 @@ class Deals with ChangeNotifier {
       // "https://q-cf.bstatic.com/images/hotel/max1024x768/162/162977485.jpg",
       //  "https://www.iucn.org/sites/dev/files/styles/850x500_no_menu_article/public/import/img/phewa_lake_ayush_rana.jpg?itok=gB-0lmkh",
     ),
-    Product(
+    Hotel(
       id: "chi",
       title: "Yangshuo ",
       subtitle: "Jima Village",
@@ -210,7 +210,7 @@ class Deals with ChangeNotifier {
       // "https://q-cf.bstatic.com/images/hotel/max1024x768/162/162977485.jpg",
       //  "https://www.iucn.org/sites/dev/files/styles/850x500_no_menu_article/public/import/img/phewa_lake_ayush_rana.jpg?itok=gB-0lmkh",
     ),
-    Product(
+    Hotel(
       id: "chi",
       title: "Yangshuo Mountain",
       subtitle: "Gaotian Town",
@@ -220,7 +220,7 @@ class Deals with ChangeNotifier {
       // "https://q-cf.bstatic.com/images/hotel/max1024x768/162/162977485.jpg",
       //  "https://www.iucn.org/sites/dev/files/styles/850x500_no_menu_article/public/import/img/phewa_lake_ayush_rana.jpg?itok=gB-0lmkh",
     ),
-    Product(
+    Hotel(
       id: "chi",
       title: "CourtYard",
       subtitle: "Dongsi Sitiao",
@@ -230,7 +230,7 @@ class Deals with ChangeNotifier {
       //  "https://q-cf.bstatic.com/images/hotel/max1024x768/162/162977485.jpg",
       //  "https://www.iucn.org/sites/dev/files/styles/850x500_no_menu_article/public/import/img/phewa_lake_ayush_rana.jpg?itok=gB-0lmkh",
     ),
-    Product(
+    Hotel(
       id: "chi",
       title: "Shangri-La's ",
       subtitle: "Chaoyang District",
@@ -241,11 +241,11 @@ class Deals with ChangeNotifier {
       //  "https://www.iucn.org/sites/dev/files/styles/850x500_no_menu_article/public/import/img/phewa_lake_ayush_rana.jpg?itok=gB-0lmkh",
     ),
   ];
-  List<Product> get items {
+  List<Hotel> get items {
     return [..._items]; //--Getter for the listed items--//
   }
 
-  List<Product> findById(String id) {
+  List<Hotel> findById(String id) {
     return _items.where((product) => product.id == id).toList();
   }
 }

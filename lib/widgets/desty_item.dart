@@ -1,5 +1,5 @@
 import 'package:tour/model/Product.dart';
-import 'package:tour/product_screen.dart';
+import 'package:tour/Screens/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //---This is a widget---//
@@ -9,20 +9,17 @@ import 'package:provider/provider.dart';
 class DestyItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final selectedProducts = Provider.of<Product>(context,
-        listen: false); //provides the data type of the model
+    final selectedProducts = Provider.of<Product>(
+      context,
+    ); //provides the data type of the model
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5),
         child: GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, ProductScreen.routeName, arguments: {
-              "title": selectedProducts.title,
-              "image": selectedProducts.imageURL,
-              "id": selectedProducts.id,
-              "des": selectedProducts.description,
-            });
+            Navigator.pushNamed(context, ProductScreen.routeName,
+                arguments: selectedProducts.id);
           },
           child: Stack(
             //^^^Stack for the desired overlapping layout--//
@@ -50,14 +47,27 @@ class DestyItem extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                          selectedProducts
-                              .title, //<<---data through provider--<<
-                          style: TextStyle(
-                              fontFamily: "bestfont",
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: 20),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              selectedProducts
+                                  .title, //<<---data through provider--<<
+                              style: TextStyle(
+                                  fontFamily: "bestfont",
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 20),
+                            ),
+                            IconButton(
+                              color: Colors.red,
+                              icon: Icon(selectedProducts.isFavourite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border),
+                              onPressed: () {
+                                selectedProducts.toggleIsFavourite();
+                              },
+                            ),
+                          ],
                         ),
                         Text(
                           selectedProducts
