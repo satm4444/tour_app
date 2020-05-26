@@ -2,65 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tour/Screens/product_screen.dart';
 import 'package:tour/model/Product.dart';
-import 'package:tour/provider/products_provider.dart';
 
-class FavouriteScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final forfav = Provider.of<Products>(context);
-    final data = forfav.favourites;
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              "MY FAVOURITES",
-              style: TextStyle(
-                  //  fontFamily: "bestfont",
-                  fontSize: 21,
-                  letterSpacing: 1.5,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Container(
-              height: 12,
-              width: double.infinity,
-              color: Colors.grey.withOpacity(0.07),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Container(
-              //   color: Colors.blue,
-              height: 500,
-              child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                //  padding: EdgeInsets.all(10.0),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 5,
-                    crossAxisSpacing: 3,
-                    childAspectRatio: 2 / 3),
-                itemCount: data.length,
-                itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
-                  value: data[index],
-                  child: FavItem(),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class FavItem extends StatelessWidget {
+class DestyItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSIZE = MediaQuery.of(context).size;

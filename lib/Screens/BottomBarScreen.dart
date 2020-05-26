@@ -1,9 +1,9 @@
 import 'package:tour/Screens/dashboard.dart';
-import 'package:tour/favourite_screen.dart';
-import 'package:tour/profile.dart';
+import 'package:tour/Screens/favourite_screen.dart';
+import 'package:tour/Screens/profile.dart';
 
-import 'package:tour/Screens/search_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:tour/Screens/search_screen.dart';
 
 class BottomBarScreen extends StatefulWidget {
   @override
@@ -16,6 +16,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     DashboardPage(),
     SearchScreen(),
     FavouriteScreen(),
+
     Profile(),
   ];
   int _selectedPageIndex = 0;
@@ -49,10 +50,14 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
               title:
                   Container(), //<<<--Could also write null in the place of conatainer--<<
             ),
+
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-                size: 28,
+              icon: Padding(
+                padding: const EdgeInsets.only(bottom: 2.0),
+                child: Icon(
+                  Icons.search,
+                  size: 28,
+                ),
               ),
               title: Container(),
             ),

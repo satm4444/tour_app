@@ -1,6 +1,9 @@
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:provider/provider.dart';
 
-import 'package:tour/Screens/search_screen.dart';
+import 'package:tour/provider/cart_provider.dart';
+import 'package:tour/widgets/badge.dart';
 import 'package:tour/widgets/product_horizon.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +24,30 @@ class _DashboardPageState extends State<DashboardPage> {
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
-              DrawerHeader(
-                child: Image.network(
-                    "https://ctl.s6img.com/society6/img/b1sMuHt6R2Hx8pTsa99hI7gkAmo/w_1500/prints/~artwork/s6-original-art-uploads/society6/uploads/misc/19fc4d5ced334072a83bb03465bab5d3/~~/noragami-minimmalist-yato-prints.jpg"),
+              UserAccountsDrawerHeader(
+                accountEmail: Text(
+                  "rawalsatyam018@gmail.com",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black.withOpacity(0.8),
+                  ),
+                ),
+                accountName: Text(
+                  "Satyam Rawal",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage("assets/smile.png"),
+                ),
               ),
+              // DrawerHeader(
+              //   child: ClipRRect(
+              //       borderRadius: BorderRadius.circular(25),
+              //       child: Container(
+              //           height: 80,
+              //           width: 80,
+              //       child: Image.asset("assets/smile.png"))),
+              // ),
               ListTile(
                 trailing: Icon(Icons.map),
                 title: Text('Search by Map'),
@@ -34,10 +57,10 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
               Divider(),
               ListTile(
-                trailing: Icon(Icons.favorite),
-                title: Text('My Favourites'),
+                trailing: Icon(Icons.shopping_basket),
+                title: Text('My Orders'),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/order_screen');
                 },
               ),
               Divider(),
@@ -105,10 +128,11 @@ class _DashboardPageState extends State<DashboardPage> {
                         Padding(
                           padding: const EdgeInsets.all(0.0),
                           child: IconButton(
-                              icon: Icon(Icons.menu),
-                              onPressed: () {
-                                _scaffoldKey.currentState.openDrawer();
-                              }),
+                            icon: Icon(Icons.menu),
+                            onPressed: () {
+                              _scaffoldKey.currentState.openDrawer();
+                            },
+                          ),
                         ),
                         Text(
                           "TOUR", //title text
@@ -119,18 +143,22 @@ class _DashboardPageState extends State<DashboardPage> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(0.0),
-                          child: IconButton(
-                            icon: Icon(Icons.search),
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                  context, SearchScreen.routeName);
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => SearchScreen()),
-                              // );
+                          child: Consumer<Cart>(
+                            builder: (ctx, cart, child) {
+                              return cart.itemCount == 0
+                                  ? child
+                                  : Badge(
+                                      child: child,
+                                      value: cart.itemCount.toString(),
+                                    );
                             },
-                          ), //trailing icon
+                            child: IconButton(
+                                iconSize: 27,
+                                icon: Icon(LineIcons.shopping_cart),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/cartscreen');
+                                }),
+                          ),
                         ),
                       ],
                     ),
@@ -156,15 +184,18 @@ class _DashboardPageState extends State<DashboardPage> {
                         NetworkImage(
                             "https://www.goworldtravel.com/wp-content/uploads/2019/03/climbing-mount-fuji-in-off-season-e1553896677572.jpg"),
                         NetworkImage(
-                            "https://i.ytimg.com/vi/V3p7vx8mOqg/maxresdefault.jpg"),
+                          "https://previews.123rf.com/images/zeksk/zeksk1806/zeksk180600017/103544704-traditional-thai-decorated-buddhist-temple-on-a-mountain-with-jungle-in-the-background-chinese-templ.jpg",
+                        ),
                       ],
                       // animationDuration: Duration(seconds: 1),
-                      dotSize: 6.0,
+                      dotSize: 5.0,
                       dotSpacing: 15.0,
+
                       dotColor: Colors.black,
                       indicatorBgPadding: 4.0,
-                      dotBgColor: Colors.grey.withOpacity(0.0),
+                      dotBgColor: Colors.grey.withOpacity(0.5),
                       borderRadius: true,
+                      radius: Radius.circular(3),
                     ),
                   ),
                 ),
@@ -202,7 +233,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 SizedBox(height: 5),
                 Container(
                   //^^^--This container contains the products(destinaitons) of the desty app--<<<
-                  height: 170,
+                  height: 184,
                   width: double.infinity,
                   child: ProductHorizon(), //<<<--Listview of the products--<<
                 ),

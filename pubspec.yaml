@@ -26,6 +26,8 @@ dependencies:
   provider: ^4.0.4
   carousel_pro: ^1.0.0
   line_icons: ^0.2.0
+  intl: ^0.16.1
+  flutter_spinkit: ^4.1.2+1
 
 dev_dependencies:
   flutter_test:
@@ -46,9 +48,13 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/amazing.png
+    - assets/images/icons/facebook.png
     - assets/smile.png
+    - assets/images/icons/google.png
+    - assets/images/icons/linkedin.png
     - assets/profilecover.png
     - assets/parteners.png
+    - assets/banner.jpg
    
 
   # An image asset can refer to one or more resolution-specific "variants", see

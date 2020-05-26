@@ -11,17 +11,18 @@ class ProductGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final data = Provider.of<Deals>(context).findById(id);
     return GridView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        //  padding: EdgeInsets.all(10.0),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 5,
-            crossAxisSpacing: 3,
-            childAspectRatio: 2 / 3),
-        itemCount: data.length,
-        itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
-              value: data[index],
-              child: DealsItem(),
-            ));
+      physics: NeverScrollableScrollPhysics(),
+      //  padding: EdgeInsets.all(10.0),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          mainAxisSpacing: 5,
+          crossAxisSpacing: 3,
+          childAspectRatio: 2 / 3),
+      itemCount: data.length,
+      itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
+        value: data[index],
+        child: DealsItem(),
+      ),
+    );
   }
 }

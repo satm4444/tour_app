@@ -1,7 +1,13 @@
 import 'package:tour/Screens/BottomBarScreen.dart';
-import 'package:tour/model/Product.dart';
+import 'package:tour/Screens/OrderScreen.dart';
+import 'package:tour/Screens/cart_screen.dart';
+
 import 'package:tour/Screens/product_screen.dart';
+import 'package:tour/loadingscreen.dart';
+import 'package:tour/login_page.dart';
+import 'package:tour/provider/cart_provider.dart';
 import 'package:tour/provider/deals_of_products_provider.dart';
+import 'package:tour/provider/order_provider.dart';
 import 'package:tour/provider/products_provider.dart';
 import 'package:tour/Screens/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +24,13 @@ class MyApp extends StatelessWidget {
           value: Products(),
         ),
         ChangeNotifierProvider.value(
-          value: Product(),
+          value: Deals(),
         ),
         ChangeNotifierProvider.value(
-          value: Deals(),
+          value: Cart(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Orders(),
         ),
       ],
       child: MaterialApp(
@@ -29,9 +38,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: "/",
         routes: {
-          '/': (ctx) => BottomBarScreen(),
+          '/': (ctx) => LoginPage(),
+          '/load': (ctx) => LoadingScreen(),
+          '/bottombar': (ctx) => BottomBarScreen(),
           ProductScreen.routeName: (ctx) => ProductScreen(),
           SearchScreen.routeName: (ctx) => SearchScreen(),
+          '/cartscreen': (ctx) => CartScreen(),
+          "/order_screen": (ctx) => OrderScreen(),
         },
       ),
     );

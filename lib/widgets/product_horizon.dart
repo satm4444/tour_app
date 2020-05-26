@@ -1,8 +1,9 @@
 import 'package:tour/provider/products_provider.dart';
-import 'package:tour/widgets/desty_item.dart';
+//import 'package:tour/widgets/desty_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
+import 'package:tour/widgets/desty_items.dart';
 
 //~~~~~~ Horizontal ListView builder in the dashboard.dart~~~//
 
@@ -17,7 +18,7 @@ class ProductHorizon extends StatelessWidget {
       itemCount: products.length,
       itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
         value: products[index],
-        child: DestyItem(), //<<<---Item to be build in list View--,,
+        child: DestyItems(), //<<<---Item to be build in list View--,,
       ),
     );
   }

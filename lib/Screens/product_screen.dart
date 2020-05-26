@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:tour/colors.dart';
-import 'package:tour/model/Product.dart';
+
+import 'package:tour/provider/cart_provider.dart';
 import 'package:tour/provider/products_provider.dart';
+import 'package:tour/widgets/badge.dart';
 
 import 'package:tour/widgets/product_grid_builder.dart';
 
@@ -21,7 +24,7 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context).settings.arguments as String;
     final selectedProduct = Provider.of<Products>(context).findById(id);
-    final fromModel = Provider.of<Product>(context);
+    final cart = Provider.of<Cart>(context, listen: false);
 
     var screenSIZE = MediaQuery.of(context).size;
     //  var forheight = screenSIZE.height;
@@ -29,7 +32,8 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0,
+        elevation: 1,
+        //  backgroundColor: Colors.white,
         backgroundColor: Colors.white,
         title: Text(
           selectedProduct.title,
@@ -38,23 +42,22 @@ class _ProductScreenState extends State<ProductScreen> {
               fontWeight: FontWeight.w500,
               color: Color(0xff2F2F2F)),
         ),
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
         actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 4.0),
+          Consumer<Cart>(
+            builder: (ctx, cart, child) {
+              return cart.itemCount == 0
+                  ? child
+                  : Badge(
+                      child: child,
+                      value: cart.itemCount.toString(),
+                    );
+            },
             child: IconButton(
-              color: Colors.red,
-              icon: Icon(fromModel.isFavourite
-                  ? Icons.favorite
-                  : Icons.favorite_border),
-              onPressed: () {
-                fromModel.toggleIsFavourite();
-              },
-            ),
+                iconSize: 27,
+                icon: Icon(LineIcons.shopping_cart),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cartscreen');
+                }),
           ),
         ],
       ),
@@ -241,7 +244,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         child: Row(
                           children: <Widget>[
                             Text(
-                              "NPR 8000/-",
+                              "NPR  ${selectedProduct.price}/-",
                               style: TextStyle(
                                   color: Colors.red,
                                   fontFamily: "bestfont",
@@ -272,13 +275,50 @@ class _ProductScreenState extends State<ProductScreen> {
                               color: AppColor.buynowbutton,
                             ),
                             child: Center(
-                              child: Text(
-                                "BOOK NOW",
-                                style: TextStyle(
-                                    fontFamily: "Heading",
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                              child: GestureDetector(
+                                onTap: () {
+                                  cart.addItem(
+                                    selectedProduct.id,
+                                    selectedProduct.price,
+                                    selectedProduct.title,
+                                    selectedProduct.imageURL,
+                                  );
+
+                                  showDialog(
+                                    context: context,
+                                    builder: (ctx) => AlertDialog(
+                                      title: Text(
+                                        "Package added to cart !",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: "bestfont"),
+                                      ),
+                                      content: Text(
+                                        "You can procced for checkout.",
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                            fontFamily: "bestfont"),
+                                      ),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text("OK"))
+                                      ],
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "BOOK NOW",
+                                  style: TextStyle(
+                                      fontFamily: "Heading",
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
                           ),
@@ -421,10 +461,9 @@ class _ProductScreenState extends State<ProductScreen> {
                 child: Container(
                   height: 170,
                   width: double.infinity,
-                  child: Image.network(
-                    "https://www.unmondeapartager.org/wp-content/uploads/2018/04/1_eiv8ar6Y9sqk_90MC1OpHw.jpeg",
-                    // "https://www.livinginluxury.club/category/packagetour.jpg",
-                    fit: BoxFit.fill,
+                  child: Image.asset(
+                    "assets/banner.jpg",
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
